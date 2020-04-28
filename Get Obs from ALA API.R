@@ -5,6 +5,8 @@ library(jsonlite)
 
 url_ala<-"https://biocache-ws.ala.org.au/ws"
 url_nbn<-"https://records-ws.nbnatlas.org"
+url_nbn<-"https://records.bioatlas.se/ws/"
+
 ###### GET artfakta
 GETala<-function(url, 
                  resource, 
@@ -23,6 +25,10 @@ GETala<-function(url,
   
   return(rff)
 }
+
+get<-GET(url = paste(url=url_nbn, #url=url_ala,
+                     resource = "occurrences",
+                     query = "search?q=genus:Macropus", sep = "/"))
 
 occ<-GETala(url=url_nbn, #url=url_ala,
             resource = "occurrences",
